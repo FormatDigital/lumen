@@ -1,0 +1,85 @@
+{
+  "name": "lumen",
+  "displayName": "Lumen",
+  "version": "1.0.0",
+  "description": "Illuminating complex files with AI-powered, step-by-step structural onboarding walkthroughs.",
+  "publisher": "format-digital",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "AI",
+    "Education",
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "license": "MIT",
+  "enabledApiProposals": [
+    "editorInsets"
+  ],
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.90.0",
+    "typescript": "^5.0.0"
+  },
+  "contributes": {
+    "viewsContainers": {
+      "panel": [
+        {
+          "id": "lumen-panel",
+          "title": "Lumen",
+          "icon": "$(zap)"
+        }
+      ]
+    },
+    "views": {
+      "lumen-panel": [
+        {
+          "type": "webview",
+          "id": "walkthroughWindow",
+          "name": "Walkthrough"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "walkthrough.start",
+        "title": "Lumen: Illuminate Active File"
+      },
+      {
+        "command": "walkthrough.next",
+        "title": "Lumen: Next Block"
+      },
+      {
+        "command": "walkthrough.prev",
+        "title": "Lumen: Previous Block"
+      },
+      {
+        "command": "walkthrough.setFilter",
+        "title": "Lumen: Set Scan Filter"
+      },
+      {
+        "command": "walkthrough.askFollowUp",
+        "title": "Lumen: Ask Follow-up (internal)"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "walkthrough.setFilter",
+          "when": "false"
+        },
+        {
+          "command": "walkthrough.askFollowUp",
+          "when": "false"
+        }
+      ]
+    }
+  }
+}
